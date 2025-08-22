@@ -6,21 +6,19 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'TestModal',
-    props: {
+<script setup>
+    const props = defineProps({
         modalShowStatus: {
             type: Boolean,
             required: true,
-        },
-    },
-    methods: {
-        closePopup() {
-            this.$emit('update:modalShowStatus', false)
         }
+    })
+
+    const emits = (['closePopup'])
+    
+    const closePopup = function() {
+        emits('update:modalShowStatus', false)
     }
-}
 </script>
 
 <style scoped>

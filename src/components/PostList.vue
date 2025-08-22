@@ -1,6 +1,6 @@
 <template>
     <div v-if="posts.length >= 1">
-        <PostItem v-for="post in posts" :post="post" :key="post.id"/>
+        <PostItem v-for="post in posts" :post="post" :key="post.id" @deletePost="deletePost"/>
     </div>
     <div v-else>
         <h2>posts is not defined</h2>
@@ -18,8 +18,10 @@ const props = defineProps({
     }
 })
 
+const emits = defineEmits(['deletePost']);
+
 const deletePost = function(postID) {
-    this.$emit('deletePost', postId)
+    emits('deletePost', postID)
 }
 
 </script>

@@ -9,21 +9,23 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-const title = ref('')
-const text = ref('')
+  const title = ref('')
+  const text = ref('')
 
-const createPost = function() {
-  const newPost = {
-    id: Date.now(),
-    title: this.title,
-    text: this.text,
+  const emits = (['createPost'])
+
+  const createPost = function() {
+    const newPost = {
+      id: Date.now(),
+      title: this.title,
+      text: this.text,
+    }
+    emits('createPost', newPost)
+    title = ''
+    text = ''
   }
-  this.$emit('createPost', newPost)
-  this.title = ''
-  this.text = ''
-}
 
 </script>
 
