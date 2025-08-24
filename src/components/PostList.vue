@@ -9,7 +9,7 @@
 
 <script setup>
 import PostItem from './PostItem.vue';
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
     posts:{

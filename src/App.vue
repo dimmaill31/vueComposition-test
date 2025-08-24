@@ -1,10 +1,10 @@
 <template>
     <div class="app">
-        <MyButton @click="openPopup">
+        <MyButton @click="openPopup" class="openPopup__btn">
             open form
         </MyButton>
-        <MyModal v-show="modalShowStatus" v-model:modalShowStatus="modalShowStatus">
-            <PostForm @createPost="createPost"/>
+        <MyModal v-show="modalShowStatus" v-model:modalShowStatus="modalShowStatus" @closePopup="closePopup">
+            <PostForm @createPost="createPost"/> 
         </MyModal>
         <PostList v-bind:posts="posts" @deletePost="deletePost"/>
     </div>
@@ -14,22 +14,26 @@
     import PostList from './components/PostList.vue';
     import { ref } from 'vue';
 
-    const posts = ref([ 
+    let posts = ref([ 
                     {id: 1, title: 'Gigabytes', text: 'a lot of gigabytes',},
                     {id: 2, title: 'Megabytes', text: 'a lot of megabytes',},
                     {id: 3, title: 'Kilobytes', text: 'a lot of kilobytes',}
                 ])
+    
+    let modalShowStatus = ref(false)
 
     const createPost = function(newPost) {
         posts.value.push(newPost)
     }
 
     const deletePost = function(postID) {
-        posts = posts.value.filter(post => post.id !== postID)
+        posts.value = posts.value.filter(post => post.id !== postID)
+        console.log(posts)
     }
 
     const openPopup = function() {
         modalShowStatus.value = true;
+        console.log(modalShowStatus.value)
     }
 
     const closePopup = function() {
@@ -38,5 +42,19 @@
 </script>
 
 <style>
+
+.app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.openPopup__btn{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+}
 
 </style>

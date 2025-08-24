@@ -14,7 +14,7 @@
 
 <script setup>
 
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
     post:{
@@ -23,8 +23,10 @@ const props = defineProps({
     }
 })
 
+const emits = defineEmits(['deletePost'])
+
 const deletePost = function() {
-    this.$emit('deletePost', this.post.id)
+    emits('deletePost', props.post.id)
 }
 
 </script>

@@ -19,14 +19,13 @@
   const createPost = function() {
     const newPost = {
       id: Date.now(),
-      title: this.title,
-      text: this.text,
+      title: title.value,
+      text: text.value,
     }
     emits('createPost', newPost)
-    title = ''
-    text = ''
+    title.value = ''
+    text.value = ''
   }
-
 </script>
 
 <style scoped>

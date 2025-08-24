@@ -7,6 +7,8 @@
 </template>
 
 <script setup>
+    import { defineProps, defineEmits } from 'vue'
+
     const props = defineProps({
         modalShowStatus: {
             type: Boolean,
@@ -14,10 +16,10 @@
         }
     })
 
-    const emits = (['closePopup'])
+    const emits = defineEmits(['closePopup'])
     
     const closePopup = function() {
-        emits('update:modalShowStatus', false)
+        emits('closePopup')
     }
 </script>
 
