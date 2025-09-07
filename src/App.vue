@@ -11,6 +11,10 @@
 </template>
 
 <script setup>
+    import MyButton from './components/UI/MyButton.vue';
+    import PostForm from './components/PostForm.vue';
+    import MyModal from './components/UI/MyModal.vue';
+
     import PostList from './components/PostList.vue';
     import { ref } from 'vue';
 

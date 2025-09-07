@@ -9,12 +9,14 @@
 </template>
 
 <script setup>
+  import MyInput from './UI/MyInput.vue';
+  import MyButton from './UI/MyButton.vue';
   import { ref } from 'vue';
 
   const title = ref('')
   const text = ref('')
 
-  const emits = (['createPost'])
+  const emits = defineEmits(['createPost'])
 
   const createPost = function() {
     const newPost = {
